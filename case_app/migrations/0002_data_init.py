@@ -5,7 +5,7 @@ def initialize_data(apps, schema_editor):
     Case = apps.get_model('case_app', 'Case')
     db_alias = schema_editor.connection.alias
     case_list = []
-    with open('data/cases_2021_5_14.csv') as csvfile:
+    with open('data/cases_2021_5_14.csv', encoding='utf8') as csvfile:
         reader = csv.reader(csvfile)
         rows = [row for row in reader] # TODO 두 번에 나눠서 처리하지 말고 한 번에 헤더 건너뛰고 일겅
         for row in rows[1:]:
