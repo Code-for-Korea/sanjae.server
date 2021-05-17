@@ -1,1 +1,2 @@
 django>=3.2
+git+https://github.com/achimkoh/sanjae.crawler.git
