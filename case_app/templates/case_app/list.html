@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>판례 목록</title>
+    <meta name="description" content="산재보험 판례 판결문 목록">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+
+<body>
+    <div>
+        조회 사건 개수: {{ count }}건
+    </div>
+    <div>
+        {% if ruling_list %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>사건번호</th>
+                    <th>제목</th>
+                    <th>법원</th>
+                    <th>판결유형</th>
+                    <th>사건유형</th>
+                    <th>사고질병구분</th>
+                    <th>연관사건</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ruling in ruling_list %}
+                <tr>
+                    <th>{{ ruling.id }}</th>
+                    <td>
+                        <a href="/rulings/{{ ruling.id }}">{{ ruling.case_number }}</a>
+                    </td>
+                    <td>{{ ruling.case_title }}</td>
+                    <td>{{ ruling.court_name }}</td>
+                    <td>{{ ruling.ruling_type }}</td>
+                    <td>{{ ruling.case_type }}</td>
+                    <td>{{ ruling.issue_category }}</td>
+                    <td>{{ ruling.related_case }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+    <nav class="pagination is-centered"s role="navigation" aria-label="페이지 이동">
+        <ul class="pagination-list">
+            {% if ruling_list.has_previous %}
+            <li><a href="?page=1" class="pagination-link">1</a></li>
+                {% if ruling_list.number > 3 %}
+                <li><span class="pagination-ellipsis">&hellip;</span></li>
+                {% endif %}
+                {% if ruling_list.number > 2 %}
+                <li><a href="?page={{ ruling_list.previous_page_number }}" class="pagination-link">{{ ruling_list.previous_page_number }}</a></li>
+                {% endif %}
+            {% endif %}
+            <li>
+                <a class="pagination-link is-current" aria-label="현재 페이지">{{ ruling_list.number }}</a>
+            </li>
+            {% if ruling_list.has_next %}
+                {% if ruling_list.number < ruling_list.paginator.num_pages|add:"-1" %}
+                <li><a href="?page={{ ruling_list.next_page_number }}" class="pagination-link">{{ ruling_list.next_page_number }}</a></li>
+                {% endif %}
+                {% if ruling_list.number < ruling_list.paginator.num_pages|add:"-2" %}
+                <li><span class="pagination-ellipsis">&hellip;</span></li>
+                {% endif %}
+            <li><a href="?page={{ ruling_list.paginator.num_pages }}" class="pagination-link">{{ ruling_list.paginator.num_pages }}</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</body>
+
+</html>

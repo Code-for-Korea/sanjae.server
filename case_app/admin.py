@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Case
+from .models import Ruling
 
-class CaseAdmin(admin.ModelAdmin):
+class RulingAdmin(admin.ModelAdmin):
     list_display = (
         'case_number',
         'case_title',
@@ -20,4 +20,4 @@ class CaseAdmin(admin.ModelAdmin):
         'issue_category',
     )
 
-admin.site.register(Case, CaseAdmin)
+admin.site.register(Ruling, RulingAdmin)
