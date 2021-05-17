@@ -17,4 +17,4 @@ https://drive.google.com/file/d/1WVG04k1eaZccxxcdEjUS-tB5Qk1A0mBF/view?usp=shari
 8. admin 계정을 만듭니다.(python manage.py createsuperuser)
 9. 개발용 서버를 실행합니다.(python manage.py runserver)
 10. admin page에 로그인합니다. (http://127.0.0.1:8000/admin)
-11. CASE BACKEND 하위의 Cases를 클릭하면 항목 리스트를 볼 수 있으며, 리스트에서 사건번호를 클릭하면 해당 사건으 세부 내용을 볼 수 있으며 편집도 할 수 있습니다.
+11. CASE BACKEND 하위의 Rulings를 클릭하면 항목 리스트를 볼 수 있으며, 리스트에서 사건번호를 클릭하면 해당 사건으 세부 내용을 볼 수 있으며 편집도 할 수 있습니다.
