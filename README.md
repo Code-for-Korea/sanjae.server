@@ -12,4 +12,5 @@
 9. CASE BACKEND 하위의 Rulings를 클릭하면 항목 리스트를 볼 수 있으며, 리스트에서 사건번호를 클릭하면 해당 사건으 세부 내용을 볼 수 있으며 편집도 할 수 있습니다.
 
 ## TODO
-[] 컨테이너 배포를 위해 OPENDATA_API_KEY, SECRET_KEY를 환경 변수로 이전
+
+https://github.com/Code-for-Korea/sanjae.server/projects
