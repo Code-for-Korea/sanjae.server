@@ -25,11 +25,16 @@
         </div>
     </nav>
     {% if ruling %}
+    <form action="{% url 'case_app:submit' ruling.id %}" method="post">
+    {% csrf_token %}
     <div class="content p-3">
-        <h1 class="has-text-centered p-0 m-0">판결문 상세보기</h1>
+        <h1 class="has-text-centered p-0 m-0">판결문 편집하기</h1>
+        {% if error_message %}
+        <span class="is-danger">{{ error_message }}</span>
+        {% endif %}
         <div class="has-text-right">
-            <a class="button is-light" href="..">목록으로</a>
-            <a class="button is-info" href="edit">편집하기</a>
+            <a class="button is-light" href="..">취소</a>
+            <input type="submit" class="button is-info" value="저장">
         </div>
         <div class="columns">
             <div class="column">
@@ -65,24 +70,25 @@
                     </tr>
                     <tr> 
                         <th>질병코드</th>
-                        <td>{{ ruling.disease_code }}</td>
+                        <td><input type="text" name="disease_code" value="{{ ruling.disease_code }}"></td>
                     </tr>
                     <tr> 
                         <th>질병명</th>
-                        <td>{{ ruling.disease_name }}</td>
+                        <td><input type="text" name="disease_name" value="{{ ruling.disease_name }}"></td>
                     </tr>
                 </tbody>
             </table>
             </div>
             <div class="column">
                 <h5>업무환경</h5>
-                <textarea class="textarea" rows="9" readonly>{{ ruling.working_condition }}</textarea>
+                <textarea class="textarea" rows="9" name="working_condition">{{ ruling.working_condition }}</textarea>
             </div>
         </div>
         <div>
             <textarea class="textarea" rows="10" readonly>{{ ruling.ruling_text }}</textarea>
         </div>
     </div>
+    </form>
     {% endif %}
   </body>
 </html>

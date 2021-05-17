@@ -1,4 +1,7 @@
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Ruling
 
@@ -25,8 +28,27 @@ def list(request):
     }
     return render(request, 'case_app/list.html', context)
 
-
 def detail(request, ruling_id):
     ruling = get_object_or_404(Ruling, pk=ruling_id)
     context = {'ruling': ruling}
     return render(request, 'case_app/detail.html', context)
+
+@login_required(login_url='/login/')
+def edit(request, ruling_id):
+    ruling = get_object_or_404(Ruling, pk=ruling_id)
+    context = {'ruling': ruling}
+    return render(request, 'case_app/edit.html', context)
+
+@login_required(login_url='/login/')
+def submit(request, ruling_id):
+    ruling = get_object_or_404(Ruling, pk=ruling_id)
+    context = {'ruling': ruling}
+    try:
+        ruling.disease_code = request.POST['disease_code']
+        ruling.disease_name = request.POST['disease_name']
+        ruling.working_condition = request.POST['working_condition']
+        ruling.save()
+        return HttpResponseRedirect(reverse('case_app:detail', args=(ruling.id,)))
+    except:
+        context['error_message'] = '저장에 실패했습니다.'
+        return render(request, 'case_app/edit.html', context)
