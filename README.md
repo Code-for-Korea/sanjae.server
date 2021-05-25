@@ -21,3 +21,5 @@
 ## TODO
 
 [할 일 목록](https://github.com/Code-for-Korea/sanjae.server/projects/1)
+
+1차 보완 개발 이슈들을 [issue](https://github.com/Code-for-Korea/sanjae.server/issues)에 적어두었습니다. 맡아서 해 보고 싶으신 일들 있으시면 아래쪽에 자기가 하겠다고 의견 남겨주시면 감사하겠습니다.
