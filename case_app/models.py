@@ -34,8 +34,5 @@ class Ruling(models.Model):
     causality = models.TextField(blank=True, help_text='상당인과관계')
     disease = models.CharField(max_length=255, blank=True, default='', help_text='질병분류')
 
-    # TODO 사건연도 분리
-    # TODO 법원이 별도 테이블로 존재해야 하는가?
-
     def __str__(self):
         return self.case_number
