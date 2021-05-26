@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 class Ruling(models.Model):
     '''
@@ -33,6 +34,13 @@ class Ruling(models.Model):
     working_condition = models.TextField(blank=True, help_text='업무환경')
     causality = models.TextField(blank=True, help_text='상당인과관계')
     disease = models.CharField(max_length=255, blank=True, default='', help_text='질병분류')
+
+    last_modified = models.DateTimeField(auto_now=True, help_text='최근 수정 일시')
+    last_modified_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, 
+        on_delete=models.SET_NULL, 
+        null=True, blank=True,
+        help_text='최근 수정한 사용자')
 
     def __str__(self):
         return self.case_number
