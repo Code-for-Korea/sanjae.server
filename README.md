@@ -24,7 +24,7 @@ http://sanjae.codefor.kr/rulings/
 
 **코드 수정시 dev 브랜치에서 수정하고 Pull request 생성해주세요!**
 
-(main 브랜치에 직접 수정사항을 push하지 말아주세요! main 브랜치는 수정사항이 자동으로 배포될 예정이기 때문입니다.)
+(main 브랜치에 직접 수정사항을 push하지 말아주세요! main 브랜치는 수정사항이 자동으로 배포될 예정이기 때문에, 혹시 모를 충돌이나 오류에 대비해 main 수정은 PR을 거치도록 세팅해두었습니다.)
 
 ### [할 일 목록](https://github.com/Code-for-Korea/sanjae.server/projects/1)
 
