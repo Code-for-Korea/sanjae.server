@@ -45,6 +45,7 @@
                         <th>사건유형</th>
                         <th>사고질병구분</th>
                         <th>연관사건</th>
+                        <th>질병분류</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,6 +61,7 @@
                         <td>{{ ruling.case_type }}</td>
                         <td>{{ ruling.issue_category }}</td>
                         <td>{{ ruling.related_case }}</td>
+                        <td>{{ ruling.disease }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
