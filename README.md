@@ -22,11 +22,15 @@ http://sanjae.codefor.kr/rulings/
 
 ## 프로젝트에 기여하기
 
-## [할 일 목록](https://github.com/Code-for-Korea/sanjae.server/projects/1)
+**코드 수정시 dev 브랜치에서 수정하고 Pull request 생성해주세요!**
+
+(main 브랜치에 직접 수정사항을 push하지 말아주세요! main 브랜치는 수정사항이 자동으로 배포될 예정이기 때문입니다.)
+
+### [할 일 목록](https://github.com/Code-for-Korea/sanjae.server/projects/1)
 
 1차 보완 개발 이슈들을 [issue](https://github.com/Code-for-Korea/sanjae.server/issues)에 적어두었습니다. 맡아서 해 보고 싶으신 일들 있으시면 아래쪽에 자기가 하겠다고 의견 남겨주시면 감사하겠습니다.
 
-## 로컬에서 실행하는 방법
+### 로컬에서 실행하는 방법
 
 1. python 개발 환경을 구축합니다.
 2. 프로젝트에 필요한 가상환경을 만듭니다.(권장사항)
