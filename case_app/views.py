@@ -44,8 +44,7 @@ def submit(request, ruling_id):
     ruling = get_object_or_404(Ruling, pk=ruling_id)
     context = {'ruling': ruling}
     try:
-        ruling.disease_code = request.POST['disease_code']
-        ruling.disease_name = request.POST['disease_name']
+        ruling.disease = request.POST['disease']
         ruling.working_condition = request.POST['working_condition']
         ruling.save()
         return HttpResponseRedirect(reverse('case_app:detail', args=(ruling.id,)))

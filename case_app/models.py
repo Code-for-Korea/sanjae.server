@@ -17,8 +17,7 @@ class Ruling(models.Model):
     그 밖의 항목
     related_case: 판결문에서 추출한 연관판결. f'{법원},{사건번호},{n심}-{법원},{사건번호},{n심}...' 형식의 문자열
     working_condition: 업무환경 (수기 입력)
-    disease_code: 표준 질병코드 (수기 입력)
-    disease_name: 질병명 (수기 입력)
+    disease: 표준 질병코드 + 질병명 (KCD 8차 질병코드 옵션 중 선택)
     '''
     case_number = models.CharField(max_length=255, help_text='사건번호') # 보통 13자 이내
     court_name = models.CharField(max_length=255, help_text='법원') # 보통 11자 이내
@@ -31,8 +30,7 @@ class Ruling(models.Model):
     # 연관사건이 ForeignKey가 될 수 있을까? 현재 목록에 없는 사건번호도 있어서 일괄적용은 어려울 듯.
     # 하지만 db에 존재하는 사건일 경우 조회할 수 있으면 좋겠다
     working_condition = models.TextField(blank=True, help_text='업무환경')
-    disease_code = models.CharField(max_length=255, blank=True, default='', help_text='질병코드')
-    disease_name = models.CharField(max_length=255, blank=True, default='', help_text='질병명')
+    disease = models.CharField(max_length=255, blank=True, default='', help_text='질병분류')
 
     # TODO 사건연도 분리
     # TODO 법원 이름 띄어쓰기 다른 케이스 존재. 통일
