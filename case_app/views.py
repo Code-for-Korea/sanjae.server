@@ -9,8 +9,8 @@ from .models import Ruling
 def list(request):
     # do something
     rulings_count = Ruling.objects.count()
-    rulings_all = Ruling.objects.order_by('-id')
-    page_size = 10
+    rulings_all = Ruling.objects.order_by('-case_number')
+    page_size = 100
     paginator = Paginator(rulings_all, page_size)
 
     query_params = request.GET
