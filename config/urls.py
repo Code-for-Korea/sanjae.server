@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
+from case_app.views import redirect_to_rulings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', redirect_to_rulings),
     path('rulings/', include('case_app.urls')),
     path('login/', auth_views.LoginView.as_view(
         template_name='admin/login.html',
