@@ -6,6 +6,14 @@
     <title>판례 상세</title>
     <meta name="description" content="산재보험 판례 판결문 상세">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script type="text/javascript">
+        function popup_code_win(code_popup_url)
+        {
+            window.open(code_popup_url,
+                    'code_window',
+                    'left=500, top=300, width=750, height=800, resizable = no, scrollbars = yes');
+        }
+    </script>
   </head>
   <body>
     <nav class="navbar" role="navigation">
@@ -70,7 +78,10 @@
                     </tr>
                     <tr> 
                         <th>질병코드</th>
-                        <td><input type="text" name="disease_code" value="{{ ruling.disease_code }}"></td>
+                        <td><input type="text" name="disease_code" id="disease_code" value="{{ ruling.disease_code }}">
+                        {% load static %}
+                        &nbsp; <input type="button" value="질병코드 선택" onclick="popup_code_win('{% static 'code.html' %}')"><br>
+                        </td>
                     </tr>
                     <tr> 
                         <th>질병명</th>
