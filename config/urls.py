@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from case_app.views import redirect_to_rulings
 
 urlpatterns = [
@@ -26,4 +28,4 @@ urlpatterns = [
         template_name='admin/login.html',
         ), {'next': '/'}),
     path('logout/', auth_views.LogoutView.as_view()),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

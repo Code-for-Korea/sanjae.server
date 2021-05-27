@@ -2,6 +2,16 @@
 
 {% block title %}판례 정보 편집{% endblock %}
 {% block description %}산재보험 판례 판결문 정보 편집{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+    function popup_code_win(code_popup_url)
+    {
+        window.open(code_popup_url,
+                'code_window',
+                'left=500, top=300, width=750, height=800, resizable = no, scrollbars = yes');
+    }
+</script>
+{% endblock %}
 
 {% block content %}
 {% if ruling %}

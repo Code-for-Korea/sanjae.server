@@ -2,7 +2,19 @@
     <tbody>
         <tr> 
             <th>질병코드</th>
-            <td><textarea name="disease_code" class="textarea p-1" style="resize: none; height: 2rem" rows="1" maxlength="255" {% if readonly %}readonly{% endif %}>{{ ruling.disease_code }}</textarea></td>
+            <td class="is-flex is-justify-content-space-between">
+                <div style="flex-grow: 1">
+                    <div id="disease_display" class="textarea p-1" style="resize: none; height: 2rem; overflow: hidden; text-overflow: ellipsis" rows="1" readonly>{% if ruling.disease_code|length > 0 %}{{ ruling.disease_code }}:{{ ruling.disease_name }}{% endif %}</div>
+                    <input name="disease_code" id="disease_code" maxlength="255" style="display: none">
+                    <input name="disease_name" id="disease_name" maxlength="255" style="display: none">
+                </div>
+                {% if readonly is not True %}
+                {% load static %}
+                <div>
+                    <input type="button" class="button is-small" value="질병코드 선택" onclick="popup_code_win('{% static 'code.html' %}')">
+                </div>
+                {% endif %}
+            </td>
         </tr>
         <tr>
             <th>업무환경</th>
