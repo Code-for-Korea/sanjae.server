@@ -29,7 +29,7 @@
     <div class="content p-3">
         <h1 class="has-text-centered">판결문 목록</h1>
         <div class="is-flex is-justify-content-space-between">
-            <span class="tag">조회 사건 개수: {{ count }}건</span>
+            <span class="tag">조회 사건 개수: {{ count }}건 </span>
             <a class="has-text-right" href="https://drive.google.com/drive/folders/1gKOPq0uhw_P0eIyBnG9eYKw3MhMC1mUE" target="_blank">파일 다운로드 (임시)</a>
         </div>
         <div>
@@ -37,13 +37,13 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>사건번호</th>
-                        <th>제목</th>
-                        <th>법원</th>
-                        <th>판결유형</th>
-                        <th>사건유형</th>
-                        <th>사고질병구분</th>
+                        <th style="min-width:50px;" ><a href="?page=1&sort=-id">-</a>#{% if sort == '-id' %}(-){% elif sort == 'id' %}(+){% endif %}<a href="?page=1&sort=id">+</a></th>
+                        <th style="min-width:140px;" ><a href="?page=1&sort=-case_number">-</a>사건번호{% if sort == '-case_number' %}(-){% elif sort == 'case_number' %}(+){% endif %}<a href="?page=1&sort=case_number">+</a></th>
+                        <th><a href="?page=1&sort=-case_title">-</a>제목{% if sort == '-case_title' %}(-){% elif sort == 'case_title' %}(+){% endif %}<a href="?page=1&sort=case_title">+</a></th>
+                        <th><a href="?page=1&sort=-court_name">-</a>법원{% if sort == '-court_name' %}(-){% elif sort == 'court_name' %}(+){% endif %}+</a></th>
+                        <th style="min-width:140px;" ><a href="?page=1&sort=-ruling_type">-</a>판결유형{% if sort == '-ruling_type' %}(-){% elif sort == 'ruling_type' %}(+){% endif %}<a href="?page=1&sort=ruling_type">+</a></th>
+                        <th style="min-width:140px;" ><a href="?page=1&sort=-case_type">-</a>사건유형{% if sort == '-case_type' %}(-){% elif sort == 'case_type' %}(+){% endif %}<a href="?page=1&sort=case_type">+</a></th>
+                        <th style="min-width:140px;" ><a href="?page=1&sort=-issue_category">-</a>사고질병구분<{% if sort == '-issue_category' %}(-){% elif sort == 'issue_category' %}(+){% endif %}a href="?page=1&sort=issue_category">+</a></th>
                         <th>연관사건</th>
                     </tr>
                 </thead>
@@ -69,12 +69,12 @@
         <nav class="pagination is-centered"s role="navigation" aria-label="페이지 이동">
             <ul class="pagination-list">
                 {% if ruling_list.has_previous %}
-                <li><a href="?page=1" class="pagination-link">1</a></li>
+                <li><a href="?page=1&sort={{ sort }}" class="pagination-link">1</a></li>
                     {% if ruling_list.number > 3 %}
                     <li><span class="pagination-ellipsis">&hellip;</span></li>
                     {% endif %}
                     {% if ruling_list.number > 2 %}
-                    <li><a href="?page={{ ruling_list.previous_page_number }}" class="pagination-link">{{ ruling_list.previous_page_number }}</a></li>
+                    <li><a href="?page={{ ruling_list.previous_page_number }}&sort={{ sort }}" class="pagination-link">{{ ruling_list.previous_page_number }}</a></li>
                     {% endif %}
                 {% endif %}
                 <li>
@@ -82,12 +82,12 @@
                 </li>
                 {% if ruling_list.has_next %}
                     {% if ruling_list.number < ruling_list.paginator.num_pages|add:"-1" %}
-                    <li><a href="?page={{ ruling_list.next_page_number }}" class="pagination-link">{{ ruling_list.next_page_number }}</a></li>
+                    <li><a href="?page={{ ruling_list.next_page_number }}&sort={{ sort }}" class="pagination-link">{{ ruling_list.next_page_number }}</a></li>
                     {% endif %}
                     {% if ruling_list.number < ruling_list.paginator.num_pages|add:"-2" %}
                     <li><span class="pagination-ellipsis">&hellip;</span></li>
                     {% endif %}
-                <li><a href="?page={{ ruling_list.paginator.num_pages }}" class="pagination-link">{{ ruling_list.paginator.num_pages }}</a></li>
+                <li><a href="?page={{ ruling_list.paginator.num_pages }}&sort={{ sort }}" class="pagination-link">{{ ruling_list.paginator.num_pages }}</a></li>
                 {% endif %}
             </ul>
         </nav>

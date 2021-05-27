@@ -7,13 +7,16 @@ from .models import Ruling
 
 # Create your views here.
 def list(request):
+    query_params = request.GET
+    sort = query_params.get('sort', '-case_number')
+
+
     # do something
     rulings_count = Ruling.objects.count()
-    rulings_all = Ruling.objects.order_by('-case_number')
+    rulings_all = Ruling.objects.order_by(sort)
     page_size = 100
     paginator = Paginator(rulings_all, page_size)
 
-    query_params = request.GET
     page_num = query_params.get('page', '1')
     try:
         page_num = int(page_num)
@@ -25,6 +28,7 @@ def list(request):
     context = {
         'ruling_list': ruling_list,
         'count': rulings_count,
+        'sort' : sort,
     }
     return render(request, 'case_app/list.html', context)
 
