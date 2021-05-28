@@ -6,24 +6,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('case_app', '0005_auto_20210526_2227'),
+        ("case_app", "0005_auto_20210526_2227"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='ruling',
-            name='disease',
+            model_name="ruling",
+            name="disease",
         ),
         migrations.AddField(
-            model_name='ruling',
-            name='disease_code',
+            model_name="ruling",
+            name="disease_code",
             field=models.CharField(
-                blank=True, default='', help_text='질병코드', max_length=255),
+                blank=True, default="", help_text="질병코드", max_length=255
+            ),
         ),
         migrations.AddField(
-            model_name='ruling',
-            name='disease_name',
+            model_name="ruling",
+            name="disease_name",
             field=models.CharField(
-                blank=True, default='', help_text='질병코드', max_length=255),
+                blank=True, default="", help_text="질병코드", max_length=255
+            ),
         ),
     ]

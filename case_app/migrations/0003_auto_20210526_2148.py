@@ -6,22 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('case_app', '0002_data_init'),
+        ("case_app", "0002_data_init"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='ruling',
-            name='disease_code',
+            model_name="ruling",
+            name="disease_code",
         ),
         migrations.RemoveField(
-            model_name='ruling',
-            name='disease_name',
+            model_name="ruling",
+            name="disease_name",
         ),
         migrations.AddField(
-            model_name='ruling',
-            name='disease',
+            model_name="ruling",
+            name="disease",
             field=models.CharField(
-                blank=True, default='', help_text='질병코드 및 질병명', max_length=255),
+                blank=True, default="", help_text="질병코드 및 질병명", max_length=255
+            ),
         ),
     ]

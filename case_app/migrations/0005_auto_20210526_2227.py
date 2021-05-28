@@ -9,19 +9,24 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('case_app', '0004_auto_20210526_2152'),
+        ("case_app", "0004_auto_20210526_2152"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='ruling',
-            name='last_modified',
-            field=models.DateTimeField(auto_now=True, help_text='최근 수정 일시'),
+            model_name="ruling",
+            name="last_modified",
+            field=models.DateTimeField(auto_now=True, help_text="최근 수정 일시"),
         ),
         migrations.AddField(
-            model_name='ruling',
-            name='last_modified_by',
-            field=models.ForeignKey(blank=True, help_text='최근 수정한 사용자', null=True,
-                                    on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL),
+            model_name="ruling",
+            name="last_modified_by",
+            field=models.ForeignKey(
+                blank=True,
+                help_text="최근 수정한 사용자",
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]
