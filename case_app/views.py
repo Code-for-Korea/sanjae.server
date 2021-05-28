@@ -49,6 +49,7 @@ def submit(request, ruling_id):
     context = {'ruling': ruling}
     try:
         ruling.disease = request.POST['disease']
+        ruling.causality = request.POST['causality']
         ruling.working_condition = request.POST['working_condition']
         ruling.save()
         return HttpResponseRedirect(reverse('case_app:detail', args=(ruling.id,)))

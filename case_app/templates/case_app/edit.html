@@ -1,90 +1,36 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>판례 상세</title>
-    <meta name="description" content="산재보험 판례 판결문 상세">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-  </head>
-  <body>
-    <nav class="navbar" role="navigation">
-        <div class="navbar-end">
-            {% if user.is_authenticated %}
-            <div class="navbar-item">
-                <span>{{ user }}</span>
-            </div>
-            <div class="navbar-item">
-                <a href="/logout/?next=/rulings">로그아웃</a>
-            </div>
-            {% else %} 
-            <div class="navbar-item">
-                <a href="/login/?next=/rulings">로그인</a>
-            </div>
-            {% endif %}
+{% extends "./base.html" %}
+
+{% block title %}판례 정보 편집{% endblock %}
+{% block description %}산재보험 판례 판결문 정보 편집{% endblock %}
+
+{% block content %}
+{% if ruling %}
+<form action="{% url 'case_app:submit' ruling.id %}" method="post">
+{% csrf_token %}
+
+    <!-- 상단 메뉴 -->
+    <h1 class="has-text-centered has-background-white pt-1 pb-2 m-0" style="position: sticky; top: 0; z-index: 1">판결문 정보 편집하기</h1>
+    {% if error_message %}
+    <div class="has-text-centered has-text-danger-dark">{{ error_message }}</div>
+    {% endif %}
+    <div class="has-text-right py-1" style="position: sticky; top: 0; z-index: 2">
+        <a class="button is-light" href="..">취소</a>
+        <input type="submit" class="button is-info" value="저장">
+    </div>
+
+    <!-- 중간 메타데이터 -->
+    <div class="columns is-mobile has-background-white" style="position: sticky; top: 2.75rem">
+        <div class="column is-one-third">
+            {% include "./detail/case-info-readonly.html" %}
         </div>
-    </nav>
-    {% if ruling %}
-    <form action="{% url 'case_app:submit' ruling.id %}" method="post">
-    {% csrf_token %}
-    <div class="content p-3">
-        <h1 class="has-text-centered p-0 m-0">판결문 편집하기</h1>
-        {% if error_message %}
-        <span class="is-danger">{{ error_message }}</span>
-        {% endif %}
-        <div class="has-text-right">
-            <a class="button is-light" href="..">취소</a>
-            <input type="submit" class="button is-info" value="저장">
-        </div>
-        <div class="columns">
-            <div class="column">
-            <table class="table is-narrow">
-                <tbody>
-                    <tr> 
-                        <th>사건번호</th>
-                        <td class="has-text-weight-semibold">{{ ruling.case_number }}</td>
-                    </tr> 
-                    <tr> 
-                        <th>제목</th>
-                        <td>{{ ruling.case_title }}</td>
-                    </tr> 
-                    <tr> 
-                        <th>법원</th>
-                        <td>{{ ruling.court_name }}</td>
-                    </tr> 
-                    <tr> 
-                        <th>판결유형</th>
-                        <td>{{ ruling.ruling_type }}</td>
-                    </tr> 
-                    <tr> 
-                        <th>사건유형</th>
-                        <td>{{ ruling.case_type }}</td>
-                    </tr> 
-                    <tr> 
-                        <th>사고질병구분</th>
-                        <td>{{ ruling.issue_category }}</td>
-                    </tr> 
-                    <tr> 
-                        <th>연관사건</th>
-                        <td>{{ ruling.related_case }}</td>
-                    </tr>
-                    <tr> 
-                        <th>질병코드</th>
-                        <td><input type="text" name="disease" value="{{ ruling.disease }}"></td>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-            <div class="column">
-                <h5>업무환경</h5>
-                <textarea class="textarea" rows="9" name="working_condition">{{ ruling.working_condition }}</textarea>
-            </div>
-        </div>
-        <div>
-            <textarea class="textarea" rows="10" readonly>{{ ruling.ruling_text }}</textarea>
+        <div class="column">
+            {% include "./detail/case-info-editable.html" with readonly=False %}
         </div>
     </div>
-    </form>
-    {% endif %}
-  </body>
-</html>
+
+    <!-- 하단 판결문 -->
+    {% include "./detail/case-info-text.html" %}
+
+</form>
+{% endif %}
+{% endblock %}
