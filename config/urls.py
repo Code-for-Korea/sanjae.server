@@ -28,9 +28,7 @@ urlpatterns = [
     path("rulings/", include("case_app.urls")),
     path(
         "login/",
-        auth_views.LoginView.as_view(
-            template_name="admin/login.html",
-        ),
+        auth_views.LoginView.as_view(template_name="admin/login.html", ),
         {"next": "/"},
     ),
     path("logout/", auth_views.LogoutView.as_view()),

@@ -17,15 +17,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="ruling",
             name="disease_code",
-            field=models.CharField(
-                blank=True, default="", help_text="질병코드", max_length=255
-            ),
+            field=models.CharField(blank=True,
+                                   default="",
+                                   help_text="질병코드",
+                                   max_length=255),
         ),
         migrations.AddField(
             model_name="ruling",
             name="disease_name",
-            field=models.CharField(
-                blank=True, default="", help_text="질병코드", max_length=255
-            ),
+            field=models.CharField(blank=True,
+                                   default="",
+                                   help_text="질병코드",
+                                   max_length=255),
         ),
     ]

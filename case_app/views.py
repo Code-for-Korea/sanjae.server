@@ -67,7 +67,8 @@ def submit(request, ruling_id):
         ruling.causality = request.POST["causality"]
         ruling.working_condition = request.POST["working_condition"]
         ruling.save()
-        return HttpResponseRedirect(reverse("case_app:detail", args=(ruling.id,)))
+        return HttpResponseRedirect(
+            reverse("case_app:detail", args=(ruling.id, )))
     except:
         context["error_message"] = "저장에 실패했습니다."
         return render(request, "case_app/edit.html", context)
