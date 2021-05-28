@@ -19,7 +19,8 @@ class Ruling(models.Model):
     related_case: 판결문에서 추출한 연관판결. f'{법원},{사건번호},{n심}-{법원},{사건번호},{n심}...' 형식의 문자열
     working_condition: 업무환경 (수기 입력)
     causality: 상당인과관계 (수기 입력)
-    disease: 표준 질병코드 + 질병명 (KCD 8차 질병코드 옵션 중 선택)
+    disease_code: 표준 질병코드 (KCD 8차 기준)
+    disease_name: 질병명 (KCD 8차 기준)
     '''
     case_number = models.CharField(max_length=255, help_text='사건번호') # 보통 13자 이내
     court_name = models.CharField(max_length=255, help_text='법원') # 보통 11자 이내
@@ -33,7 +34,8 @@ class Ruling(models.Model):
     # 하지만 db에 존재하는 사건일 경우 조회할 수 있으면 좋겠다
     working_condition = models.TextField(blank=True, help_text='업무환경')
     causality = models.TextField(blank=True, help_text='상당인과관계')
-    disease = models.CharField(max_length=255, blank=True, default='', help_text='질병분류')
+    disease_code = models.CharField(max_length=255, blank=True, default='', help_text='질병코드')
+    disease_name = models.CharField(max_length=255, blank=True, default='', help_text='질병코드')
 
     last_modified = models.DateTimeField(auto_now=True, help_text='최근 수정 일시')
     last_modified_by = models.ForeignKey(
