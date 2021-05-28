@@ -1,13 +1,13 @@
 <!--
-    Code for Korea - 산업재해 채널 
+    Code for Korea - 산업재해 채널
     산업재해 판결문 열람 프로젝트
     질병코드 선택 모듈 개발
 
     사용법
-    1. Code.html의 URL을 popup_code_win의 인자로 넣어 Code picker 창을 띄운다. 창을 띄우는 방법은 자유롭게 해도 된다. 
+    1. Code.html의 URL을 popup_code_win의 인자로 넣어 Code picker 창을 띄운다. 창을 띄우는 방법은 자유롭게 해도 된다.
     2. Code picker에서 선택 된 값은, 이 창의 id='disease_code'인 Element에 입력 된다.
 -->
-   
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +28,8 @@
 
         function select_code()
         {
-            var getSelectedValue = document.querySelector( 'input[name="code"]:checked');   
-            if(getSelectedValue != null) {  
+            var getSelectedValue = document.querySelector( 'input[name="code"]:checked');
+            if(getSelectedValue != null) {
                 document.getElementById("code_text").value = getSelectedValue.value;
                 const [code, name] = getSelectedValue.value.split(':');
                 return {code, name};
@@ -39,7 +39,7 @@
    </script>
 </head>
 <body ondblclick="set_host_disease_code()" onclick="select_code()">
-    <h1>Disease Code Picker</h1> 
+    <h1>Disease Code Picker</h1>
     <p>검색 : Control + F</p>
     <p>입력 : 코드 선택 후 더블클릭 하거나, 'Select & Close' 버튼 클릭</p>
     <input type="text" id="code_text" style=" width:300px;"> <input type="button" value="Select & Close" onclick="set_host_disease_code()"><br><br>
@@ -3760,6 +3760,6 @@
     <input type='radio' name='code' id='Z97' value='Z97:기타 장치의 존재'>Z97:기타 장치의 존재<br>
     <input type='radio' name='code' id='Z98' value='Z98:기타 수술후 상태'>Z98:기타 수술후 상태<br>
     <input type='radio' name='code' id='Z99' value='Z99:달리 분류되지 않은 기능성 기계 및 장치에 대한 의존'>Z99:달리 분류되지 않은 기능성 기계 및 장치에 대한 의존<br>
-    
+
 </body>
 </html>
