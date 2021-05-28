@@ -21,6 +21,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='ruling',
             name='disease',
-            field=models.CharField(blank=True, default='', help_text='질병코드 및 질병명', max_length=255),
+            field=models.CharField(
+                blank=True, default='', help_text='질병코드 및 질병명', max_length=255),
         ),
     ]

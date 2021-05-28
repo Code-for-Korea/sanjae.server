@@ -26,6 +26,6 @@ urlpatterns = [
     path('rulings/', include('case_app.urls')),
     path('login/', auth_views.LoginView.as_view(
         template_name='admin/login.html',
-        ), {'next': '/'}),
+    ), {'next': '/'}),
     path('logout/', auth_views.LogoutView.as_view()),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

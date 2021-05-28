@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='ruling',
             name='disease',
-            field=models.CharField(blank=True, default='', help_text='질병분류', max_length=255),
+            field=models.CharField(
+                blank=True, default='', help_text='질병분류', max_length=255),
         ),
     ]

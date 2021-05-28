@@ -5,15 +5,17 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from .models import Ruling
 
+
 def redirect_to_rulings(request):
     response = redirect('/rulings/')
     return response
 
 # Create your views here.
+
+
 def list(request):
     query_params = request.GET
     sort = query_params.get('sort', '-case_number')
-
 
     # do something
     rulings_count = Ruling.objects.count()
@@ -32,20 +34,23 @@ def list(request):
     context = {
         'ruling_list': ruling_list,
         'count': rulings_count,
-        'sort' : sort,
+        'sort': sort,
     }
     return render(request, 'case_app/list.html', context)
+
 
 def detail(request, ruling_id):
     ruling = get_object_or_404(Ruling, pk=ruling_id)
     context = {'ruling': ruling}
     return render(request, 'case_app/detail.html', context)
 
+
 @login_required(login_url='/login/')
 def edit(request, ruling_id):
     ruling = get_object_or_404(Ruling, pk=ruling_id)
     context = {'ruling': ruling}
     return render(request, 'case_app/edit.html', context)
+
 
 @login_required(login_url='/login/')
 def submit(request, ruling_id):
