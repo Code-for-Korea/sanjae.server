@@ -24,5 +24,14 @@
 
 <!-- 하단 판결문 -->
 {% include "./detail/case-info-text.html" %}
+
 {% endif %}
 {% endblock %}
+
+<!-- 최종 수정일시, 수정한 사용자 -->
+{% if ruling.last_modified_by %}
+{% block footer %}
+    <div class="has-text-centered">최종 수정일시: {{ ruling.last_modified }}</div>
+    <div class="has-text-centered">마지막으로 수정한 사용자: {{ ruling.last_modified_by }}</div>
+{% endblock %}
+{% endif %}
