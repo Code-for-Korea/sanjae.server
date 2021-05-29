@@ -1,0 +1,16 @@
+<nav class="navbar is-flex is-justify-content-end is-align-items-center" role="navigation">
+    <div class="navbar-end is-flex">
+        {% if user.is_authenticated %}
+        <div class="navbar-item">
+            <span>{{ user }}</span>
+        </div>
+        <div class="navbar-item">
+            <a href="/logout/?next=/rulings">로그아웃</a>
+        </div>
+        {% else %}
+        <div class="navbar-item">
+            <a href="/login/?next=/rulings">로그인</a>
+        </div>
+        {% endif %}
+    </div>
+</nav>
