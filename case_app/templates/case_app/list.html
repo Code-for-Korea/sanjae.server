@@ -7,6 +7,25 @@
 <h1 class="has-text-centered">판결문 목록</h1>
 <div class="is-flex is-justify-content-space-between">
     <span class="tag">조회 사건 개수: {{ count }}건 </span>
+    <div class="is-flex">
+        <input class="input p-1" id="search" name="search">
+        <button for="search" class="button p-1" onclick="doSearch()">검색</button>
+        <script type="text/javascript">
+            const searchInput = document.getElementById('search');
+            searchInput.addEventListener("keyup", function(event) {
+                if (event.key === "Enter") {
+                    doSearch();
+                }
+            })
+            function doSearch() {
+                const keyword = document.getElementById('search').value;
+                if (keyword.length) {
+                    const searchUrl = '?search=' + keyword;
+                    window.location.replace(searchUrl);
+                }
+            }
+        </script>
+    </div>
     <a class="has-text-right" href="https://drive.google.com/drive/folders/1gKOPq0uhw_P0eIyBnG9eYKw3MhMC1mUE" target="_blank">파일 다운로드 (임시)</a>
 </div>
 <div>
