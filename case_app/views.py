@@ -11,10 +11,14 @@ from .models import Ruling
 
 try:
     # 판례 목록 필터로 사용할 값들의 목록을 서버 실행시 정의해둡니다.
-    court_name_list = [value['court_name'] for value in Ruling.objects.values('court_name').distinct().order_by('court_name')]
-    ruling_type_list = [value['ruling_type'] for value in Ruling.objects.values('ruling_type').distinct().order_by('ruling_type')]
-    case_type_list = [value['case_type'] for value in Ruling.objects.values('case_type').distinct().order_by('case_type')]
-    issue_category_list = [value['issue_category'] for value in Ruling.objects.values('issue_category').distinct().order_by('issue_category')]
+    court_name_list = [value['court_name'] for value in Ruling.objects.values(
+        'court_name').distinct().order_by('court_name')]
+    ruling_type_list = [value['ruling_type'] for value in Ruling.objects.values(
+        'ruling_type').distinct().order_by('ruling_type')]
+    case_type_list = [value['case_type'] for value in Ruling.objects.values(
+        'case_type').distinct().order_by('case_type')]
+    issue_category_list = [value['issue_category'] for value in Ruling.objects.values(
+        'issue_category').distinct().order_by('issue_category')]
 except:
     # DB 테이블이 생성되지 않았거나 하는 등의 이유로 오류가 나면 None으로 처리
     court_name_list = None
@@ -22,12 +26,14 @@ except:
     case_type_list = None
     issue_category_list = None
 
+
 def redirect_to_rulings(request):
     '''
     루트(/)로 접속할 때 판결문 목록으로 리다이렉트하기 위해 사용하는 함수형 뷰
     '''
     response = redirect("/rulings/")
     return response
+
 
 def list(request):
     '''
@@ -39,7 +45,7 @@ def list(request):
     search_keyword = query_params.get("search")
     if search_keyword:
         queryset = Ruling.objects.filter(
-            Q(case_number__icontains=search_keyword) | 
+            Q(case_number__icontains=search_keyword) |
             Q(ruling_text__icontains=search_keyword) |
             Q(case_title__icontains=search_keyword)
         )
